@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = ({fields}) => {
+const PlayerSubmissionForm = ({index, fields, sendSubmission}) => {
 
   const [playerForm, setPlayerForm] = useState( {
     adj1: '',
@@ -15,19 +15,33 @@ const PlayerSubmissionForm = ({fields}) => {
   })
 
   const handleInputChange = (event) => {
-    
     const { name, value } = event.target
-
     setPlayerForm({ ...playerForm, [name]: value })
+  }
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    sendSubmission(playerForm)
+
+    setPlayerForm({
+      adj1: '',
+      noun1: '',
+      adv: '',
+      verb: '',
+      adj2: '',
+      noun2: ''
+    })
+
   }
 
 
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{ index }</h3>
 
-      <form className="PlayerSubmissionForm__form" >
+      <form onSubmit={onFormSubmit} className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
 
