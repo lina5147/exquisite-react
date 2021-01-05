@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './PlayerSubmissionForm.css';
 
-const PlayerSubmissionForm = () => {
+const PlayerSubmissionForm = ({fields}) => {
 
   const [playerForm, setPlayerForm] = useState( {
     adj1: '',
@@ -13,6 +13,13 @@ const PlayerSubmissionForm = () => {
     adj2: '',
     noun2: ''
   })
+
+  const handleInputChange = (event) => {
+    
+    const { name, value } = event.target
+
+    setPlayerForm({ ...playerForm, [name]: value })
+  }
 
 
 
@@ -32,32 +39,38 @@ const PlayerSubmissionForm = () => {
             placeholder="adjective"
             name="adj1"
             value={playerForm.adj1}
+            onChange={handleInputChange}
             type="text" />
           <input
             placeholder="noun"
             name='noun1'
             value={playerForm.noun1}
+            onChange={handleInputChange}
             type="text" />
           <input
             placeholder="adverb"
             name='adv'
             value={playerForm.adv}
+            onChange={handleInputChange}
             type="text" />
           <input
             placeholder="verb"
             name='verb'
             value={playerForm.verb}
+            onChange={handleInputChange}
             type="text" />
           the
           <input
             placeholder="adjective"
             name='adj2'
             value={playerForm.adj2}
+            onChange={handleInputChange}
             type="text" />
           <input
             placeholder="noun"
             name='noun2'
             value={playerForm.noun2}
+            onChange={handleInputChange}
             type="text" />
           .
         </div>

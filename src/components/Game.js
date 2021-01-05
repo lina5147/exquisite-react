@@ -13,6 +13,15 @@ const Game = () => {
     }
   }).join(' ');
 
+
+  const [poem, setPoem] = useState([])
+  const [player, setPlayer] = useState(1)
+
+  const addSubmission = (submission) => {
+    setPoem([...poem, submission]);
+    setPlayer(player + 1);
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,7 +36,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm fields={FIELDS} />
 
       <FinalPoem />
 
