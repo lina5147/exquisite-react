@@ -15,10 +15,27 @@ const PlayerSubmissionForm = () => {
           {
             // Put your form inputs here... We've put in one below as an example
           }
+          The
           <input
-            placeholder="hm..."
+            placeholder="adjective"
             type="text" />
-
+          <input
+            placeholder="noun"
+            type="text" />
+          <input
+            placeholder="adverb"
+            type="text" />
+          <input
+            placeholder="verb"
+            type="text" />
+          the
+          <input
+            placeholder="adjective"
+            type="text" />
+          <input
+            placeholder="noun"
+            type="text" />
+          .
         </div>
 
         <div className="PlayerSubmissionForm__submit">
