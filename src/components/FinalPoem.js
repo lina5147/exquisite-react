@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './FinalPoem.css';
 
-const FinalPoem = (props) => {
-  if (props.isSubmitted) {
+const FinalPoem = ({isSubmitted, submissions, revealPoem}) => {
+  if (isSubmitted) {
     return (
       <div className="FinalPoem">
         <section className="FinalPoem__poem">
           <h3>Final Poem</h3>
-          {props.submissions.map((submission, i) => {
+          {submissions.map((submission, i) => {
             return (
               <p key={i}>{submission}</p>
             )
@@ -19,7 +19,7 @@ const FinalPoem = (props) => {
     return (
     <div className="FinalPoem">
       <div className="FinalPoem__reveal-btn-container">
-        <input onClick={props.revealPoem} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
+        <input onClick={revealPoem} type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
       </div>
     </div>
    )}
