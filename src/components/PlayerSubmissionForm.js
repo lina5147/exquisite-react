@@ -54,18 +54,23 @@ const PlayerSubmissionForm = ({index, fields, sendSubmission}) => {
           {
             // Put your form inputs here... We've put in one below as an example
             fields.map((item) => {
-              return (
-                item.key ? 
+
+              if (item.key) {
+                const {key, placeholder} = item
+                return(
                   <input
-                    key={item.key} 
-                    placeholder={item.placeholder}
-                    name={item.key}
-                    value={playerForm[item.key]}
+                    key={key} 
+                    placeholder={placeholder}
+                    name={key}
+                    value={playerForm[key]}
                     onChange={handleInputChange}
                     type='text'
-                    className={isBlank(item.key) ? 'PlayerSubmissionFormt__input--invalid' : 'valid'}
+                    className={isBlank(key) ? 'PlayerSubmissionFormt__input--invalid' : 'valid'}
                   /> 
-                  : item );
+                )
+              } else {
+                return item;
+              }
              })
           }
           
