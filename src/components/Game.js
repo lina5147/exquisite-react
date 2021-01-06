@@ -25,6 +25,11 @@ const Game = () => {
     setPlayer(player + 1);
   }
 
+  const onRevealPoemClick = () => {
+    setIsSubmitted(true);
+    setCurrentSubmission('');
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -39,9 +44,9 @@ const Game = () => {
 
       {currentSubmission !== '' ? <RecentSubmission submission={currentSubmission} /> : null }
 
-      <PlayerSubmissionForm index={player} fields={FIELDS} sendSubmission={addSubmission} />
+      {isSubmitted === false ? <PlayerSubmissionForm index={player} fields={FIELDS} sendSubmission={addSubmission} /> : null }
 
-      <FinalPoem submissions={poem} />
+      <FinalPoem isSubmitted={isSubmitted} submissions={poem} revealPoem={onRevealPoemClick} />
 
     </div>
   );
