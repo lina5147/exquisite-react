@@ -33,9 +33,12 @@ const PlayerSubmissionForm = ({index, fields, sendSubmission}) => {
     }).join(' ');
 
     sendSubmission(submission);
-
     setPlayerForm(emptyForm);
 
+  }
+
+  const isBlank = (field) => {
+    return playerForm[field] === '';
   }
 
 
@@ -57,8 +60,10 @@ const PlayerSubmissionForm = ({index, fields, sendSubmission}) => {
                     key={item.key} 
                     placeholder={item.placeholder}
                     name={item.key}
+                    value={playerForm[item.key]}
                     onChange={handleInputChange}
                     type='text'
+                    className={isBlank(item.key) ? 'PlayerSubmissionFormt__input--invalid' : 'valid'}
                   /> 
                   : item );
              })
