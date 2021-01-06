@@ -16,9 +16,12 @@ const Game = () => {
 
   const [poem, setPoem] = useState([])
   const [player, setPlayer] = useState(1)
+  const [currentSubmission, setCurrentSubmission] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const addSubmission = (submission) => {
     setPoem([...poem, submission]);
+    setCurrentSubmission(submission);
     setPlayer(player + 1);
   }
 
@@ -34,11 +37,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {currentSubmission !== '' ? <RecentSubmission submission={currentSubmission} /> : null }
 
       <PlayerSubmissionForm index={player} fields={FIELDS} sendSubmission={addSubmission} />
 
-      <FinalPoem />
+      <FinalPoem submissions={poem} />
 
     </div>
   );

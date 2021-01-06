@@ -24,7 +24,15 @@ const PlayerSubmissionForm = ({index, fields, sendSubmission}) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    sendSubmission(playerForm);
+    const submission = fields.map((field) => {
+      if (field.key) {
+        return playerForm[field.key]
+      } else {
+        return field;
+      }
+    }).join(' ');
+
+    sendSubmission(submission);
 
     setPlayerForm(emptyForm);
 
@@ -44,7 +52,7 @@ const PlayerSubmissionForm = ({index, fields, sendSubmission}) => {
             // Put your form inputs here... We've put in one below as an example
             fields.map((item) => {
               return (
-                item.placeholder ? 
+                item.key ? 
                   <input
                     key={item.key} 
                     placeholder={item.placeholder}
